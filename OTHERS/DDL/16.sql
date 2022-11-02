@@ -1,0 +1,17 @@
+﻿create table public."IPT_返品情報" (
+  "返品日" character varying(20)
+  , "注文番号" character varying(20)
+  , "出品者SKU" character varying(20)
+  , "ASIN" character varying(20)
+  , "FNSKU" character varying(20)
+  , "商品名" character varying(20)
+  , "数量" character varying(20)
+  , "FC" character varying(20)
+  , "商品の状態" character varying(20)
+  , "理由" character varying(20)
+  , lpn character varying(20)
+  , "お客様のコメント" character varying(20)
+  , "店舗ID" character varying(20)
+  , "登録日時" character varying(20)
+  , "更新日時" character varying(20)
+);
