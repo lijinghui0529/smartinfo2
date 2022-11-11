@@ -1,30 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="efw" uri="efw" %>
+<%@ taglib prefix="efw" uri="efw" %> 
+<!-- <上面两行的作用 > -->
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>データ導入</title>
+
+	<!-- 如果连接没有设置名字，那么返回空白回复； 如果有设置名字，那么返回名字。 -->
 	<efw:Client/>
+
 	<script>
             (function ($) {
+			//$.getUrlParam 获取 的是什么
                 $.getUrlParam = function (name) {
                     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-                    var r = window.location.search.substr(1).match(reg);
-                    if (r != null) return unescape(r[2]); return null;
+                    var r = window.location.search.substr(1).match(reg);     //match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。
+                    // unescape(r[2])返回的是什么
+					if (r != null) return unescape(r[2]); return null;
                 }
-            })(jQuery);
+            })(jQuery);//传入jQuery 的目的
 
-
+			//debug:
             $(function(){
- 
-	            var shop = $.getUrlParam('shop');
-
+				//获取跳转页面链接里的参数 例如 路径 http://localhost/wx/auctionDetail?status=26&statusID=3 可以获取到status statusID的值
+	            var shop = $.getUrlParam('shop');//shop 指的是什么
+				//page 的作用
 	            var page = "データ導入";
 
-	            var t = page + "（" + shop + "）" + $("#pagehead").html();
-
+	            var t = page + "(" + shop + ")" + $("#pagehead").html();
+				//html() 方法设置或返回被选元素的内容（innerHTML）
 	            $("#pagehead").html(t);
-
+				//val() 方法返回或设置被选元素的 value 属性。
 	            $("#shop").val(shop);
 			 
 			});
@@ -56,274 +62,175 @@
 <body style="background-color:ghostwhite;" onload="searchHistory();">
 
 <div style="font-size: 30px;color: blue;display: inline-block;width: 100%" id="pagehead">
-	<img src="img/home.png" style="width: 64px;height: 64px;" onclick="window.location.href = '/smartinfo/'">
+	<img src="img/home.png" style="width: 64px;height: 64px;" onclick="window.location.href = '/smartinfo2/'">
 </div>
-<input type="hidden" id="shop">
-<br/>
-<table class="upfile" id="mastertable">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			商品マスタ情報
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 120px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
+<div style="text-align: right;width: 70%;">
+	<input type="button" id="import" style="width: 170px;height: 30px;" value="導入"
+		onclick="Efw('master/importmaster')">
+</div>
+<table border="1" style="width: 70%;height: 70%;">
+	<tr style="background-color:rgba(86, 86, 207, 0.696) ;">
+		<th style="width:10%">No</th>
+		<th style="width:20%">ファイル名称</th>
+		<th style="width:10%">添付ファエル</th>
+		<th style="width:50%">前回導入日時</th>
+		<th style="width:10%">前回導入件数</th>
 	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="file" id="importfile_master" style="width: 400px;height: 30px;">
+	<tr align="center" ; style="width: 400px;height: 30%;">
+		<td>2</td>
+		<td>22</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導出" onclick="Efw('master/outputmaster')">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('master/importmaster')">
-		</td>
+		<td>222</td>
+		<td>2222</td>
 	</tr>
-</table>
-<br/>
-<table class="upfile" id="producttable">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			出品、在庫、注文インポート
+	<tr align="center">
+		<td>3</td>
+		<td>3</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 120px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
+		<td>3</td>
+		<td>3</td>
 	</tr>
-	<tr>
-		<td colspan="2">
-			<span style="font-weight: bold;">出品詳細レポート</span><input type="file" id="importfile_product" style="width: 400px;height: 30px;">
+	<tr align="center">
+		<td>4</td>
+		<td>4</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td colspan="3" style="text-align: right;">
-			<!--<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'product',liststock:''})">-->
-		</td>
+		<td>4</td>
+		<td>4</td>
 	</tr>
-	<tr>
-		<td colspan="2">
-			<span style="font-weight: bold;">FBA在庫レポート</span><input type="file" id="importfile_fba" style="width: 400px;height: 30px;">
+	<tr align="center">
+		<td>5</td>
+		<td>5</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td colspan="3" style="text-align: right;">
-			<!--<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'fba',liststock:''})">-->
-		</td>
+		<td>5</td>
+		<td>5</td>
 	</tr>
-	<tr>
-		<td colspan="2">
-			<span style="font-weight: bold;">全注文レポート</span><input type="file" id="importfile_order" style="width: 400px;height: 30px;">
+	<tr align="center">
+		<td>6</td>
+		<td>6</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'pfo'})">
-		</td>
+		<td>6</td>
+		<td>6</td>
 	</tr>
-</table>
-<!--
-<br/>
-<table class="upfile" id="fbatable">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			FBA在庫レポート
+	<tr align="center">
+		<td>7</td>
+		<td>7</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 80px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
+		<td>7</td>
+		<td>7</td>
 	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="file" id="importfile_fba" style="width: 400px;height: 30px;">
+	<tr align="center">
+		<td>8</td>
+		<td>8</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'fba',liststock:''})">
-		</td>
+		<td>8</td>
+		<td>8</td>
 	</tr>
-</table>
-<br/>
-<table class="upfile" id="ordertable">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			全注文レポート
+	<tr align="center">
+		<td>9</td>
+		<td>9</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 80px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
+		<td>9</td>
+		<td>9</td>
 	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="file" id="importfile_order" style="width: 400px;height: 30px;">
+	<tr align="center">
+		<td>10</td>
+		<td>10</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
 		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'order',liststock:''})">
-		</td>
+		<td>10</td>
+		<td>10</td>
 	</tr>
-</table>
+	<tr align="center">
+		<td>11</td>
+		<td>11</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>11</td>
+		<td>11</td>
+	</tr>
+	<tr align="center">
+		<td>12</td>
+		<td>12</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>12</td>
+		<td>12</td>
+	</tr>
+	<tr align="center">
+		<td>13</td>
+		<td>13</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>13</td>
+		<td>13</td>
+	</tr>
+	<tr align="center">
+		<td>14</td>
+		<td>14</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>14</td>
+		<td>14</td>
+	</tr>
+	<tr align="center">
+		<td>15</td>
+		<td>15</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>15</td>
+		<td>15</td>
+	</tr>
+	<tr align="center">
+		<td>16</td>
+		<td>16</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>16</td>
+		<td>16</td>
+	</tr>
+	<tr align="center">
+		<td>17</td>
+		<td>17</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>17</td>
+		<td>17</td>
+	</tr>
+	<tr align="center">
+		<td>18</td>
+		<td>18</td>
+		<td>
+			<input type="file" id="importfile_earnings" style="width: 400px;height: 30%;">
+		</td>
+		<td>18</td>
+		<td>18</td>
+	</tr>
 
-<br/>
-<table class="upfile" id="localstocktable">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			在庫情報導入
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 120px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="file" id="importfile_localstock" style="width: 400px;height: 30px;">
-		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'localstock'})">
-		</td>
-	</tr>
+
 </table>
--->
-<br/>
-<table class="upfile" id="earningstable">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			売上詳細情報導入
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 120px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="file" id="importfile_earnings" style="width: 400px;height: 30px;">
-		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'earnings'})">
-		</td>
-	</tr>
-</table>
-<br/>
-<table class="upfile" id="costtable">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			コスト情報
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 120px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="file" id="importfile_cost" style="width: 400px;height: 30px;">
-		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導出" onclick="Efw('cost/outputcost')">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('cost/importcost')">
-		</td>
-	</tr>
-</table>
-<br/>
-<table class="upfile" id="shiptable_amazon">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			Amazon発送情報導入
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 120px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="file" id="importfile_ship_amazon" style="width: 400px;height: 30px;">
-		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'ship_amazon'})">
-		</td>
-	</tr>
-</table>
-<br/>
-<table class="upfile" id="shiptable_qoo10">
-	<tr>
-		<td style="width: 350px;font-size: 20px;font-weight: bold;">
-			Qoo10発送情報導入
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入日時：
-		</td>
-		<td style="width: 220px;font-size: 16px;" class="importtime">
-		</td>
-		<td style="width: 120px;font-size: 16px;">
-			前回導入件数：
-		</td>
-		<td style="width: 120px;font-size: 16px;text-align: right;" class="importcount">
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			商品情報<br>
-			<input type="file" id="importfile_ship_qoo10_order" style="width: 400px;height: 30px;">
-		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'ship_qoo10_order'})">
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			発送情報<br>
-			<input type="file" id="importfile_ship_qoo10_ship" style="width: 400px;height: 30px;">
-		</td>
-		<td colspan="3" style="text-align: right;">
-			<input type="button" id="import" style="width: 170px;height: 30px;" value="導入" onclick="Efw('uploadfile',{data:'ship_qoo10_ship'})">
-		</td>
-	</tr>
-</table>
-<br/>
 </body>
 </html>
