@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls>
+<sqls>
+	<sql id="selectInitInfo">
+		select
+			"店舗ID"
+			, "データ種別"
+			, "導入日時"
+			, "導入件数" 
+		from
+			( 
+				select
+					"店舗ID"
+					, "データ種別"
+					, "導入日時"
+					, "導入件数"
+					, row_number() over (partition by "データ種別" order by "導入日時" desc) rn 
+				from
+					"TRN_データ導入履歴" 
+				where
+					"店舗ID" = :shopId
+			) temp 
+		where
+			rn = 1 
+		order by
+			"データ種別"
+
+	</sql>
+	<sql id="delAllFile01">
+		DELETE FROM "IPT_全出品情報"
+	</sql>
+	<sql id="insertFile01">
+		INSERT INTO "IPT_全出品情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24,
+			:col25,
+			:col26,
+			:col27,
+			:col28,
+			:col29,
+			:col30,
+			:col31,
+			:col32,
+			:col33,
+			:col34,
+			:col35,
+			:col36,
+			:col37,
+			:col38,
+			:col39,
+			:col40,
+			:col41,
+			:col42,
+			:col43,
+			:col44,
+			:col45,
+			:col46  
+		)
+	</sql>
+
+	<sql id="delAllFile02">
+		DELETE FROM "IPT_全注文情報"
+	</sql>
+	<sql id="insertFile02">
+		INSERT INTO "IPT_全注文情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24,
+			:col25,
+			:col26,
+			:col27,
+			:col28,
+			:col29,
+			:col30,
+			:col31			 
+		)
+	</sql>
+
+	<sql id="delAllFile03">
+		DELETE FROM "IPT_FBA在庫情報"
+	</sql>
+	<sql id="insertFile03">
+		INSERT INTO "IPT_FBA在庫情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8
+		)
+	</sql>
+
+	<sql id="delAllFile04">
+		DELETE FROM "IPT_ペイメント情報"
+	</sql>
+	<sql id="insertFile04">
+		INSERT INTO "IPT_ペイメント情報" 
+		 
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24,
+			:col25,
+			:col26,
+			:col27,
+			:col28,
+			:col29,
+			:col30,
+			:col31,
+			:col32,
+			:col33,
+			:col34,
+			:col35,
+			:col36,
+			:col37,
+			:col38,
+			:col39,
+			:col40,
+			:col41,
+			:col42,
+			:col43,
+			:col44,
+			:col45,
+			:col46, 
+			:col47,
+			:col48,
+			:col49,
+			:col50,
+			:col51
+			
+		)
+	</sql>
+
+	<sql id="delAllFile05">
+		DELETE FROM "IPT_FBA未出荷情報"
+	</sql>
+	<sql id="insertFile05">
+		INSERT INTO "IPT_FBA未出荷情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24,
+			:col25,
+			:col26,
+			:col27,
+			:col28,
+			:col29,
+			:col30,
+			:col31,
+			:col32,
+			:col33,
+			:col34,
+			:col35,
+			:col36,
+			:col37,
+			:col38,
+			:col39,
+			:col40,
+			:col41,
+			:col42,
+			:col43,
+			:col44,
+			:col45,
+			:col46, 
+			:col47,
+			:col48,
+			:col49,
+			:col50,
+			:col51,
+			:col52,
+			:col53,
+			:col54,
+			:col55,
+			:col56,
+			:col57,
+			:col58,
+			:col59,
+			:col60,
+			:col61,
+			:col62,
+			:col63,
+			:col64,
+			:col65,
+			:col66,
+			:col67, 
+			:col68,
+			:col69,
+			:col70,
+			:col71,
+			:col72   
+		)
+	</sql>
+
+<!-- 06 数据库里没有建表 路过 下面07 -->
+	<sql id="delAllFile06">
+		
+	</sql>
+	<sql id="insertFile06">
+		
+	</sql>
+	<sql id="delAllFile07">
+		DELETE FROM "IPT_ビジネスレポート-1"
+	</sql>
+	<sql id="insertFile07">
+		INSERT INTO "IPT_ビジネスレポート-1"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20 
+		)
+	</sql>
+
+	<sql id="delAllFile08">
+		DELETE FROM "IPT_ビジネスレポート-2"
+	</sql>
+	<sql id="insertFile08">
+		INSERT INTO "IPT_ビジネスレポート-2"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16
+		)
+	</sql>
+
+	<sql id="delAllFile09">
+		DELETE FROM "IPT_ビジネスレポート-3"
+	</sql>
+	<sql id="insertFile09">
+		INSERT INTO "IPT_ビジネスレポート-3"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19
+			  
+		)
+	</sql>
+
+	<sql id="delAllFile10">
+		DELETE FROM "IPT_ビジネスレポート-4"
+	</sql>
+	<sql id="insertFile10">
+		INSERT INTO "IPT_ビジネスレポート-4"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24   
+		)
+	</sql>
+
+	<sql id="delAllFile11">
+		DELETE FROM "IPT_FBA在庫出荷情報"
+	</sql>
+	<sql id="insertFile11">
+		INSERT INTO "IPT_FBA在庫出荷情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24,
+			:col25,
+			:col26,
+			:col27,
+			:col28,
+			:col29,
+			:col30,
+			:col31,
+			:col32,
+			:col33,
+			:col34,
+			:col35,
+			:col36,
+			:col37,
+			:col38,
+			:col39,
+			:col40,
+			:col41,
+			:col42,
+			:col43,
+			:col44,
+			:col45,
+			:col46, 
+			:col47,
+			:col48,
+			:col49,
+			:col50,
+			:col51
+			 
+		)
+	</sql>
+
+	<sql id="delAllFile12">
+		DELETE FROM "IPT_出荷情報"
+	</sql>
+	<sql id="insertFile12">
+		INSERT INTO "IPT_出荷情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17   
+		)
+	</sql>
+
+	<sql id="delAllFile13">
+		DELETE FROM "IPT_手数料見積り額情報"
+	</sql>
+	<sql id="insertFile13">
+		INSERT INTO "IPT_手数料見積り額情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24,
+			:col25,
+			:col26,
+			:col27,
+			:col28,
+			:col29   
+		)
+	</sql>
+
+	<sql id="delAllFile14">
+		DELETE FROM "IPT_在庫保管手数料情報"
+	</sql>
+	<sql id="insertFile14">
+		INSERT INTO "IPT_在庫保管手数料情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18,
+			:col19,
+			:col20,
+			:col21,
+			:col22,
+			:col23,
+			:col24,
+			:col25,
+			:col26,
+			:col27   
+		)
+	</sql>
+
+	<sql id="delAllFile15">
+		DELETE FROM "IPT_長期在庫保管手数料請求額情報"
+	</sql>
+	<sql id="insertFile15">
+		INSERT INTO "IPT_長期在庫保管手数料請求額情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17   
+		)
+	</sql>
+
+	<sql id="delAllFile16">
+		DELETE FROM "IPT_返品情報"
+	</sql>
+	<sql id="insertFile16">
+		INSERT INTO "IPT_返品情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14  
+		)
+	</sql>
+
+	<sql id="delAllFile17">
+		DELETE FROM "IPT_返送推奨情報"
+	</sql>
+	<sql id="insertFile17">
+		INSERT INTO "IPT_返送推奨情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17,
+			:col18   
+		)
+	</sql>
+
+	<sql id="delAllFile18">
+		DELETE FROM "IPT_返送所有権放棄依頼詳細情報"
+	</sql>
+	<sql id="insertFile18">
+		INSERT INTO "IPT_返送所有権放棄依頼詳細情報"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3,
+			:col4,
+			:col5,
+			:col6,
+			:col7,
+			:col8,
+			:col9,
+			:col10,
+			:col11,
+			:col12,
+			:col13,
+			:col14,
+			:col15,
+			:col16,
+			:col17  
+		)
+	</sql>
+	<sql id="insertHistory">
+		INSERT INTO "TRN_データ導入履歴"
+		VALUES (
+			:col0,
+			:col1,
+			:col2,
+			:col3
+						 
+		)
+	</sql>
+
+</sqls>
+
+
+
+
