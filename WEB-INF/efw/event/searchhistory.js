@@ -1,15 +1,13 @@
-var searchhistory={};//这个写法的意思 
+var searchhistory={};
 searchhistory.name="データ導入履歴検索";
-
 searchhistory.paramsFormat={
 	"#shop":null
 };
-//shopname 定义的是什么
 var shopname = "";
 searchhistory.fire=function(params){
-	//创建这个类用来做什么
+	
 	var ret = new Result();
-	//操作 #shop 标签
+
 	shopname = params["#shop"];
 
 	var historyResult = db.select(
@@ -17,12 +15,12 @@ searchhistory.fire=function(params){
 		"searchHistory",
 		{shop:shopname}
 	);
-	//masterArr  获取到的是什么 importtype eq  master  点击事件
+
 	var masterArr = historyResult.seek("importtype","eq","master").getArray();
 	// var productArr = historyResult.seek("importtype","eq","product").getArray();
 	// var fbaArr = historyResult.seek("importtype","eq","fba").getArray();
 	// var orderArr = historyResult.seek("importtype","eq","order").getArray();
-		//pfoArr 获取到的是什么
+
 	var pfoArr = historyResult.seek("importtype","eq","pfo").getArray();
 
 	var localstockArr = historyResult.seek("importtype","eq","localstock").getArray();
@@ -39,12 +37,9 @@ searchhistory.fire=function(params){
 	}
 
 	if(pfoArr.length > 0){
-		//满足条件后，跳转到ID 是#producttable
 		ret.runat("#producttable").withdata(
 			{
-				//前回導入日時：
 				".importtime": pfoArr[0].importtime,
-				//前回導入件数：
 				".importcount": pfoArr[0].importcount
 			}
 		);

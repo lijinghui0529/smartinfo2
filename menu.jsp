@@ -30,7 +30,7 @@
 <table style="width:1500px;" border="1">
 	<tr>
 		<td>
-			<div class="menuHeader">&nbsp;Smart-Bear(新店)メニュー</div>
+			<div class="menuHeader">&nbsp;Smart-Bear(新店)メニュー222222222222222</div>
 		</td>
 		<td>
 			<div class="menuHeader">&nbsp;代発送メニュー</div>
