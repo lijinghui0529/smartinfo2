@@ -1,3 +1,0 @@
-﻿create table public."test" (
-  
-);

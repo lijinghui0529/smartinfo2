@@ -1,4 +1,4 @@
-ï»¿create table public."IPT_FBAæœªå‡ºè·æƒ…å ±" (
+create table public."IPT_FBAÌ¤½Ğ²Ù¾ğÊó" (
   "order-id" character varying(50)
   , "order-item-id" character varying(50)
   , "purchase-date" character varying(50)
@@ -12,7 +12,7 @@
   , "buyer-phone-number" character varying(50)
   , sku character varying(50)
   , "number-of-items" character varying(50)
-  , "product-name" character varying(50)
+  , "product-name" character varying(200)
   , "quantity-purchased" character varying(50)
   , "quantity-shipped" character varying(50)
   , "quantity-to-ship" character varying(50)
@@ -69,7 +69,17 @@
   , "ssa-ship-method" character varying(50)
   , "tax-collection-model" character varying(50)
   , "tax-collection-responsible-party" character varying(50)
-  , "åº—èˆ—ID" character varying(20)
-  , "ç™»éŒ²æ—¥æ™‚" character varying(20)
-  , "æ›´æ–°æ—¥æ™‚" character varying(20)
+  , "Å¹ÊŞID" character varying(50)
+  , "ÅĞÏ¿Æü»ş" character varying(50)
+  , "¹¹¿·Æü»ş" character varying(50)
+);create table public."IPT_FBAºß¸Ë¾ğÊó" (
+  "seller-sku" character varying(50)
+  , "fulfillment-channel-sku" character varying(50)
+  , asin character varying(50)
+  , "condition-type" character varying(50)
+  , "Warehouse-Condition-code" character varying(50)
+  , "Quantity Available" character varying(50)
+  , "Å¹ÊŞID" character varying(50)
+  , "ÅĞÏ¿Æü»ş" character varying(50)
+  , "¹¹¿·Æü»ş" character varying(50)
 );

@@ -1,4 +1,4 @@
-ï»¿create table public."IPT_å…¨æ³¨æ–‡æƒ…å ±" (
+create table public."IPT_Á´ÃíÊ¸¾ðÊó" (
   "amazon-order-id" character varying(50)
   , "merchant-order-id" character varying(50)
   , "purchase-date" character varying(50)
@@ -27,8 +27,8 @@
   , "ship-state" character varying(50)
   , "ship-postal-code" character varying(50)
   , "ship-country" character varying(50)
-  , "promotion-ids" character varying(50)
-  , "åº—èˆ—ID" character varying(20)
-  , "ç™»éŒ²æ—¥æ™‚" character varying(20)
-  , "æ›´æ–°æ—¥æ™‚" character varying(20)
+  , "promotion-ids" character varying(200)
+  , "Å¹ÊÞID" character varying(20)
+  , "ÅÐÏ¿Æü»þ" character varying(20)
+  , "¹¹¿·Æü»þ" character varying(20)
 );

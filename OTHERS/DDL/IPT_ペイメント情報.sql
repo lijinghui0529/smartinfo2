@@ -1,56 +1,54 @@
-ï»¿create table public."IPT_ãƒšã‚¤ãƒ¡ãƒ³ãƒˆæƒ…å ± " (
-"æ—¥ä»˜/æ™‚é–“" character varying(20),
-"æ±ºæ¸ˆç•ªå·" character varying(20),
-"ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®ç¨®é¡" character varying(20),
-"æ³¨æ–‡ç•ªå·" character varying(50),
-"SKU" character varying(20),
-"èª¬æ˜" character varying(20),
-"æ•°é‡" character varying(20),
-"Amazon å‡ºå“ã‚µãƒ¼ãƒ“ã‚¹" character varying(20),
-"ãƒ•ãƒ«ãƒ•ã‚£ãƒ«ãƒ¡ãƒ³ãƒˆ1" character varying(20),
-"å¸‚ç”ºæ‘1" character varying(20),
-"éƒ½é“åºœçœŒ1" character varying(20),
-"éƒµä¾¿ç•ªå·1" character varying(20),
-"ç¨é‡‘å¾´åå‹1" character varying(20),
-"å•†å“å£²ä¸Š1" character varying(20),
-"å•†å“ã®å£²ä¸Šç¨" character varying(20),
-"é…é€æ–™" character varying(20),
-"é…é€æ–™ã®ç¨é‡‘" character varying(20),
-"ã‚®ãƒ•ãƒˆåŒ…è£…æ‰‹æ•°æ–™" character varying(20),
-"ã‚®ãƒ•ãƒˆåŒ…è£…ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã®ç¨é‡‘" character varying(20),
-"Amazon1ãƒã‚¤ãƒ³ãƒˆã®è²»ç”¨" character varying(20),
-"ãƒ—ãƒ­ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å‰²å¼•é¡" character varying(20),
-"ãƒ—ãƒ­ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å‰²å¼•ã®ç¨é‡‘" character varying(20),
-"æºæ³‰å¾´åç¨ã‚’ä¼´ã†ãƒãƒ¼ã‚±ãƒƒãƒˆãƒ—ãƒ¬ã‚¤ã‚¹" character varying(20),
-"æ‰‹æ•°æ–™" character varying(20),
-"FBA æ‰‹æ•°æ–™1" character varying(20),
-"ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã«é–¢ã™ã‚‹ãã®ä»–ã®æ‰‹æ•°æ–™" character varying(20),
-"ãã®ä»–" character varying(20),
-"åˆè¨ˆ" character varying(20),
-"Amazon2 å‡ºå“ã‚µãƒ¼ãƒ“ã‚¹" character varying(20),
-"ãƒ•ãƒ«ãƒ•ã‚£ãƒ«ãƒ¡ãƒ³ãƒˆ2" character varying(20),
-"å¸‚ç”ºæ‘2" character varying(20),
-"éƒ½é“åºœçœŒ2" character varying(20),
-"éƒµä¾¿ç•ªå·2" character varying(20),
-"ç¨é‡‘å¾´åå‹" character varying(20),
-"å•†å“å£²ä¸Š" character varying(20),
-"å•†å“ã®å£²ä¸Šç¨2" character varying(20),
-"é…é€æ–™2" character varying(20),
-"é…é€æ–™ã®ç¨é‡‘2" character varying(20),
-"ã‚®ãƒ•ãƒˆåŒ…è£…æ‰‹æ•°æ–™2" character varying(20),
-"ã‚®ãƒ•ãƒˆåŒ…è£…ã‚¯ãƒ¬ã‚¸ãƒƒãƒˆã®ç¨é‡‘2" character varying(20),
-"Amazon3ãƒã‚¤ãƒ³ãƒˆã®è²»ç”¨ " character varying(50),
-"ãƒ—ãƒ­ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å‰²å¼•é¡2" character varying(20),
-"ãƒ—ãƒ­ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³å‰²å¼•ã®ç¨é‡‘2" character varying(20),
-"æºæ³‰å¾´åç¨ã‚’ä¼´ã†ãƒãƒ¼ã‚±ãƒƒãƒˆãƒ—ãƒ¬ã‚¤ã‚¹2" character varying(20),
-"æ‰‹æ•°æ–™2" character varying(20),
-"FBA æ‰‹æ•°æ–™" character varying(20),
-"ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã«é–¢ã™ã‚‹ãã®ä»–ã®æ‰‹æ•°æ–™2" character varying(20),
-"ãã®ä»–2" character varying(20),
-"åˆè¨ˆ2" character varying(20)
-
-  
-  , "åº—èˆ—ID" character varying(20)
-  , "ç™»éŒ²æ—¥æ™‚" character varying(20)
-  , "æ›´æ–°æ—¥æ™‚" character varying(20)
+create table public."IPT_¥Ú¥¤¥á¥ó¥È¾ğÊó" (
+  "ÆüÉÕ/»ş´Ö" character varying(50)
+  , "·èºÑÈÖ¹æ" character varying(50)
+  , "¥È¥é¥ó¥¶¥¯¥·¥ç¥ó¤Î¼ïÎà" character varying(50)
+  , "ÃíÊ¸ÈÖ¹æ" character varying(50)
+  , "SKU" character varying(50)
+  , "ÀâÌÀ" character varying(200)
+  , "¿ôÎÌ" character varying(50)
+  , "Amazon ½ĞÉÊ¥µ¡¼¥Ó¥¹" character varying(50)
+  , "¥Õ¥ë¥Õ¥£¥ë¥á¥ó¥È1" character varying(50)
+  , "»ÔÄ®Â¼1" character varying(50)
+  , "ÅÔÆ»ÉÜ¸©1" character varying(50)
+  , "Í¹ÊØÈÖ¹æ1" character varying(50)
+  , "ÀÇ¶âÄ§¼ı·¿1" character varying(50)
+  , "¾¦ÉÊÇä¾å1" character varying(50)
+  , "¾¦ÉÊ¤ÎÇä¾åÀÇ" character varying(50)
+  , "ÇÛÁ÷ÎÁ" character varying(50)
+  , "ÇÛÁ÷ÎÁ¤ÎÀÇ¶â" character varying(50)
+  , "¥®¥Õ¥ÈÊñÁõ¼ê¿ôÎÁ" character varying(50)
+  , "¥®¥Õ¥ÈÊñÁõ¥¯¥ì¥¸¥Ã¥È¤ÎÀÇ¶â" character varying(50)
+  , "Amazon1¥İ¥¤¥ó¥È¤ÎÈñÍÑ" character varying(50)
+  , "¥×¥í¥â¡¼¥·¥ç¥ó³ä°ú³Û" character varying(50)
+  , "¥×¥í¥â¡¼¥·¥ç¥ó³ä°ú¤ÎÀÇ¶â" character varying(50)
+  , "¸»ÀôÄ§¼ıÀÇ¤òÈ¼¤¦¥Ş¡¼¥±¥Ã¥È¥×¥ì¥¤¥¹" character varying(50)
+  , "¼ê¿ôÎÁ" character varying(50)
+  , "FBA ¼ê¿ôÎÁ1" character varying(50)
+  , "¥È¥é¥ó¥¶¥¯¥·¥ç¥ó¤Ë´Ø¤¹¤ë¤½¤ÎÂ¾¤Î¼ê¿ôÎÁ" character varying(50)
+  , "¤½¤ÎÂ¾" character varying(50)
+  , "¹ç·×" character varying(50)
+  , "Amazon2 ½ĞÉÊ¥µ¡¼¥Ó¥¹" character varying(50)
+  , "¥Õ¥ë¥Õ¥£¥ë¥á¥ó¥È2" character varying(50)
+  , "»ÔÄ®Â¼2" character varying(50)
+  , "ÅÔÆ»ÉÜ¸©2" character varying(50)
+  , "Í¹ÊØÈÖ¹æ2" character varying(50)
+  , "ÀÇ¶âÄ§¼ı·¿" character varying(50)
+  , "¾¦ÉÊÇä¾å" character varying(50)
+  , "¾¦ÉÊ¤ÎÇä¾åÀÇ2" character varying(50)
+  , "ÇÛÁ÷ÎÁ2" character varying(50)
+  , "ÇÛÁ÷ÎÁ¤ÎÀÇ¶â2" character varying(50)
+  , "¥®¥Õ¥ÈÊñÁõ¼ê¿ôÎÁ2" character varying(50)
+  , "¥®¥Õ¥ÈÊñÁõ¥¯¥ì¥¸¥Ã¥È¤ÎÀÇ¶â2" character varying(50)
+  , "Amazon3¥İ¥¤¥ó¥È¤ÎÈñÍÑ " character varying(50)
+  , "¥×¥í¥â¡¼¥·¥ç¥ó³ä°ú³Û2" character varying(50)
+  , "¥×¥í¥â¡¼¥·¥ç¥ó³ä°ú¤ÎÀÇ¶â2" character varying(50)
+  , "¸»ÀôÄ§¼ıÀÇ¤òÈ¼¤¦¥Ş¡¼¥±¥Ã¥È¥×¥ì¥¤¥¹2" character varying(50)
+  , "¼ê¿ôÎÁ2" character varying(50)
+  , "FBA ¼ê¿ôÎÁ" character varying(50)
+  , "¥È¥é¥ó¥¶¥¯¥·¥ç¥ó¤Ë´Ø¤¹¤ë¤½¤ÎÂ¾¤Î¼ê¿ôÎÁ2" character varying(50)
+  , "¤½¤ÎÂ¾2" character varying(50)
+  , "¹ç·×2" character varying(50)
+  , "Å¹ÊŞID" character varying(50)
+  , "ÅĞÏ¿Æü»ş" character varying(20)
+  , "¹¹¿·Æü»ş" character varying(20)
 );
