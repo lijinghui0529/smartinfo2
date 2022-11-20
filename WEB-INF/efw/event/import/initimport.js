@@ -2,9 +2,13 @@ var initimport = {};
 initimport.name = "インポート画面初期表示";
 initimport.paramsFormat = {
 
-
 };
-initimport.fire=function(params){   
+initimport.fire = function (params) {
+
+	function FormatDate(strTime) {
+		var date = new Date(strTime);
+		return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+	}
 
 	var ret = new Result();
 	// 履歴テ―プルから前回導入日時と件数を取得する
@@ -12,77 +16,78 @@ initimport.fire=function(params){
 		"IMPORT",//IMPORT.xml
 		"selectInitInfo",
 		{
-			"shopId":"Smart-Bear" //session.get("SHOP_ID")
+			"shopId": "Smart-Bear" //session.get("SHOP_ID")
 		}
 	).getArray();
-	selectResult.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
 	var script = "";
 	// 取得したデータを画面に表示する
-	for(var i = 0; i < selectResult.length; i++){
+	for (var i = 0; i < selectResult.length; i++) {
 		var datetype = selectResult[i]["データ種別"];
-		if(datetype == "file01"){
+		if (datetype == "file01") {
 			script = script + "setInit('file01','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 
+			// var today = new Date();
+			// var today_time =  FormatDate(today);
+			// if(today_time > selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss")){
+			//   today_time.debug("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+			// }
 
-			
 		}
-		if(datetype == "file02"){
+		if (datetype == "file02") {
 			script = script + "setInit('file02','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file03"){
+		if (datetype == "file03") {
 			script = script + "setInit('file03','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file04"){
+		if (datetype == "file04") {
 			script = script + "setInit('file04','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file05"){
+		if (datetype == "file05") {
 			script = script + "setInit('file05','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file06"){
+		if (datetype == "file06") {
 			script = script + "setInit('file06','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file07"){
+		if (datetype == "file07") {
 			script = script + "setInit('file07','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file08"){
+		if (datetype == "file08") {
 			script = script + "setInit('file08','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file09"){
+		if (datetype == "file09") {
 			script = script + "setInit('file09','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file10"){
+		if (datetype == "file10") {
 			script = script + "setInit('file10','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file11"){
+		if (datetype == "file11") {
 			script = script + "setInit('file11','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file12"){
+		if (datetype == "file12") {
 			script = script + "setInit('file12','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file13"){
+		if (datetype == "file13") {
 			script = script + "setInit('file13','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file14"){
+		if (datetype == "file14") {
 			script = script + "setInit('file14','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file15"){
+		if (datetype == "file15") {
 			script = script + "setInit('file15','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file16"){
+		if (datetype == "file16") {
 			script = script + "setInit('file16','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file17"){
+		if (datetype == "file17") {
 			script = script + "setInit('file17','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
-		if(datetype == "file18"){
+		if (datetype == "file18") {
 			script = script + "setInit('file18','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 		}
 
 	}
 
-    script.debug("99999999999999999999999999999");
-
 	return ret.eval(script);
-
 };
 

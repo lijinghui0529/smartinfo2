@@ -27,14 +27,34 @@ importfile.paramsFormat = {
 var num = 0;//履歴登録処理の件数
 var registrationDate = "";//表里显示的时间
 var SHOP_ID = session.get("SHOP_ID");
+
 importfile.fire = function (params) {   //
 
 	var ret = new Result();
-	
+	var flg_file01 = false;
+	var flg_file02 = false;
+	var flg_file03 = false;
+	var flg_file04 = false;
+	var flg_file05 = false;
+	var flg_file06 = false;
+	var flg_file07 = false;
+	var flg_file08 = false;
+	var flg_file09 = false;
+	var flg_file10 = false;
+	var flg_file11 = false;
+	var flg_file12 = false;
+	var flg_file13 = false;
+	var flg_file14 = false;
+	var flg_file15 = false;
+	var flg_file16 = false;
+	var flg_file17 = false;
+	var flg_file18 = false;
 
 	file.saveUploadFiles("upload");//importfile_01文件上传到upload文件
 
 	if (params["#importfile_01"] != null && params["#importfile_01"] != "") {
+
+		flg_file01 = true;
 		var fa = params["#importfile_01"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -57,10 +77,14 @@ importfile.fire = function (params) {   //
 
 		saveHistory(SHOP_ID, "file01", today, num);
 
-		
-	}
 
+	}
+	
 	if (params["#importfile_02"] != null && params["#importfile_02"] != "") {
+
+		flg_file02 = true;
+
+		// ******************数据读取****************** 
 		var fa = params["#importfile_02"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -68,7 +92,9 @@ importfile.fire = function (params) {   //
 		registrationDate = today.format("yyyy-MM-dd HH:mm:ss");
 
 		var csvReader = new CSVReader("upload/" + f, "\t", "\"", "MS932");
+		// ******************数据读取******************
 
+		// ******************核心逻辑操作******************
 		// データ全件削除
 		var delResult = db.change(
 			"IMPORT",//IMPORT.xml
@@ -79,12 +105,22 @@ importfile.fire = function (params) {   //
 		//データ全件導入
 		num = 0;
 		csvReader.loopAllLines(import_02);//针对文件 aryField 的每一行执行一次方法import_01
+		// ******************核心逻辑操作******************	
+
+		// ******************同等插入H1******************	
+		//csvReader.loopAllLines(import_02_1);//针对文件 aryField 的每一行执行一次方法import_01_1
+
 
 		//履历表插入
 		saveHistory(SHOP_ID, "file02", today, num);
+
+
+
 	}
 
 	if (params["#importfile_03"] != null && params["#importfile_03"] != "") {
+
+		flg_file03 = true;
 		var fa = params["#importfile_03"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -107,7 +143,10 @@ importfile.fire = function (params) {   //
 		//履历表插入
 		saveHistory(SHOP_ID, "file03", today, num);
 	}
+
 	if (params["#importfile_04"] != null && params["#importfile_04"] != "") {
+
+		flg_file04 = true;
 		var fa = params["#importfile_04"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -139,6 +178,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_05"] != null && params["#importfile_05"] != "") {
+
+		flg_file05 = true;
 		var fa = params["#importfile_05"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -164,6 +205,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_06"] != null && params["#importfile_06"] != "") {
+
+		flg_file06 = true;
 		var fa = params["#importfile_06"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -188,6 +231,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_07"] != null && params["#importfile_07"] != "") {
+
+		flg_file07 = true;
 		var fa = params["#importfile_07"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -213,6 +258,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_08"] != null && params["#importfile_08"] != "") {
+
+		flg_file08 = true;
 		var fa = params["#importfile_08"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -236,7 +283,10 @@ importfile.fire = function (params) {   //
 		//履历表插入
 		saveHistory(SHOP_ID, "file08", today, num);
 	}
+
 	if (params["#importfile_09"] != null && params["#importfile_09"] != "") {
+
+		flg_file09 = true;
 		var fa = params["#importfile_09"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -263,6 +313,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_10"] != null && params["#importfile_10"] != "") {
+
+		flg_file10 = true;
 		var fa = params["#importfile_10"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -289,6 +341,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_11"] != null && params["#importfile_11"] != "") {
+
+		flg_file11 = true;
 		var fa = params["#importfile_11"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -315,6 +369,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_12"] != null && params["#importfile_12"] != "") {
+
+		flg_file12 = true;
 		var fa = params["#importfile_12"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -344,6 +400,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_13"] != null && params["#importfile_13"] != "") {
+
+		flg_file13 = true;
 		var fa = params["#importfile_13"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -367,6 +425,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_14"] != null && params["#importfile_14"] != "") {
+
+		flg_file14 = true;
 		var fa = params["#importfile_14"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -390,6 +450,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_15"] != null && params["#importfile_15"] != "") {
+
+		flg_file15 = true;
 		var fa = params["#importfile_15"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -413,6 +475,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_16"] != null && params["#importfile_16"] != "") {
+
+		flg_file16 = true;
 		var fa = params["#importfile_16"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -436,6 +500,8 @@ importfile.fire = function (params) {   //
 	}
 
 	if (params["#importfile_17"] != null && params["#importfile_17"] != "") {
+
+		flg_file17 = true;
 		var fa = params["#importfile_17"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -456,10 +522,12 @@ importfile.fire = function (params) {   //
 
 		//履历表插入
 		saveHistory(SHOP_ID, "file17", today, num);
-		
+
 	}
 
 	if (params["#importfile_18"] != null && params["#importfile_18"] != "") {
+
+		flg_file18 = true;
 		var fa = params["#importfile_18"].split("\\");
 		var f = fa[fa.length - 1];//取出文件名
 
@@ -482,15 +550,12 @@ importfile.fire = function (params) {   //
 		saveHistory(SHOP_ID, "file18", today, num);
 	}
 
-
-
-
-
+	excute(flg_file01, flg_file02, flg_file03, flg_file04, flg_file05, flg_file06,
+		flg_file07, flg_file08, flg_file09, flg_file10, flg_file11, flg_file12,
+		flg_file13, flg_file14, flg_file15, flg_file16, flg_file17, flg_file18);
 
 	return ret.navigate("upload.jsp?shop=Smart-Bear");//跳转
-
 };
-
 function import_01(aryField, index) {//aryField第一个参数是当前行的数据（数组） index指的是行索引（第一行时index=0,第二行时index=1）........+1;
 
 	if (index > 0) {
@@ -551,7 +616,7 @@ function import_01(aryField, index) {//aryField第一个参数是当前行的数
 			}
 		);//导入数据库
 		num++;
-		
+
 	}
 };
 function import_02(aryField, index) {//aryField第一个参数是当前行的数据（数组） index指的是行索引（第一行时index=0,第二行时index=1）........+1;
@@ -770,9 +835,7 @@ function import_05(aryField, index) {//aryField第一个参数是当前行的数
 		num++;
 	}
 };
-
 // 第六个方法空的，没写 以后定义
-
 function import_06(aryField, index) {//aryField第一个参数是当前行的数据（数组） index指的是行索引（第一行时index=0,第二行时index=1）........+1;
 
 	// if(index > 0){
@@ -806,7 +869,6 @@ function import_06(aryField, index) {//aryField第一个参数是当前行的数
 	//num++;
 	// }
 };
-
 function import_07(aryField, index) {//aryField第一个参数是当前行的数据（数组） index指的是行索引（第一行时index=0,第二行时index=1）........+1;
 
 	if (index > 0) {
@@ -1234,8 +1296,6 @@ function import_18(aryField, index) {//aryField第一个参数是当前行的数
 		num++;
 	}
 };
-
-
 function saveHistory(shopId, fileId, importData, ct) {
 
 	var historyResult = db.change(
@@ -1249,7 +1309,6 @@ function saveHistory(shopId, fileId, importData, ct) {
 		}
 	);
 };
-
 function formatNumber(str) {
 
 	if (str == null || str == "") {

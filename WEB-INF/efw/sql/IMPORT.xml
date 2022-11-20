@@ -1,6 +1,390 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqls>
 <sqls>
+
+	<sql id="deleteFile_h1">
+			delete 
+			from
+				"HIS_注文情報" 
+			where
+				exists ( 
+					select
+						1 
+					from
+						"IPT_全注文情報" 
+					where
+						"IPT_全注文情報"."amazon-order-id" = "HIS_注文情報"."amazon-order-id" 
+						and "IPT_全注文情報"."sku" = "HIS_注文情報"."sku" 
+						and "IPT_全注文情報"."asin" = "HIS_注文情報"."asin"
+						<!-- and "IPT_全注文情報"."店舗ID" = 'Smart-Bear' -->
+						
+						<!-- and "IPT_全注文情報"."店舗ID" = "HIS_注文情報"."店舗ID" -->
+						<!-- and "IPT_全注文情報"."店舗ID" = :shopId -->
+				)
+	</sql>
+	<sql id="deleteFile_h2">
+			delete 
+			from
+				"HIS_ペイメント情報" 
+			where
+				exists ( 
+					select
+						1 
+					from
+						"IPT_ペイメント情報" 
+					where
+						    "IPT_ペイメント情報"."日付/時間" = "HIS_ペイメント情報"."日付/時間" 
+						and "IPT_ペイメント情報"."決済番号" = "HIS_ペイメント情報"."決済番号" 
+						and "IPT_ペイメント情報"."トランザクションの種類" = "HIS_ペイメント情報"."トランザクションの種類" 
+						<!-- and "IPT_ペイメント情報"."注文番号" = "HIS_ペイメント情報"."注文番号" 
+						and "IPT_ペイメント情報"."SKU" = "HIS_ペイメント情報"."SKU"  -->
+						and "IPT_ペイメント情報"."説明" = "HIS_ペイメント情報"."説明" 						
+
+						<!-- and "IPT_ペイメント情報"."店舗ID" = "HIS_ペイメント情報"."店舗ID" 
+						and "IPT_ペイメント情報"."店舗ID" = :shopId  -->
+						
+				)
+	</sql>
+	<sql id="deleteFile_h3">
+			delete 
+			from
+				"HIS_在庫保管手数料情報" 
+			where
+				exists ( 
+					select
+						1 
+					from
+						"IPT_在庫保管手数料情報" 
+					where
+						    "IPT_在庫保管手数料情報"."ASIN" = "HIS_在庫保管手数料情報"."ASIN" 
+						and "IPT_在庫保管手数料情報"."Fulfillment center" = "HIS_在庫保管手数料情報"."Fulfillment center" 						
+						and "IPT_在庫保管手数料情報"."Country code" = "HIS_在庫保管手数料情報"."Country code" 
+						and "IPT_在庫保管手数料情報"."Month of charge" = "HIS_在庫保管手数料情報"."Month of charge"						
+						
+						<!-- and "IPT_在庫保管手数料情報"."店舗ID" = "HIS_在庫保管手数料情報"."店舗ID" 
+						and "IPT_在庫保管手数料情報"."店舗ID" = :shopId     -->
+					)	
+	</sql>
+	<sql id="deleteFile_h4">
+		delete 
+		from
+			"HIS_長期在庫保管手数料請求額情報" 
+		where
+			exists ( 
+				select
+					1 
+				from
+					"IPT_長期在庫保管手数料請求額情報" 
+				where
+					"IPT_長期在庫保管手数料請求額情報"."日付" = "HIS_長期在庫保管手数料請求額情報"."日付" 
+					and "IPT_長期在庫保管手数料請求額情報"."出品者SKU" = "HIS_長期在庫保管手数料請求額情報"."出品者SKU" 
+					and "IPT_長期在庫保管手数料請求額情報"."ASIN" = "HIS_長期在庫保管手数料請求額情報"."ASIN" 
+					and "IPT_長期在庫保管手数料請求額情報"."コンディション" = "HIS_長期在庫保管手数料請求額情報"."コンディション" 
+					and "IPT_長期在庫保管手数料請求額情報"."国" = "HIS_長期在庫保管手数料請求額情報"."国" 
+
+					<!-- and "IPT_長期在庫保管手数料請求額情報"."店舗ID" = "HIS_長期在庫保管手数料請求額情報"."店舗ID" 
+					and "IPT_長期在庫保管手数料請求額情報"."店舗ID" = :shopId  -->
+			)
+	</sql>
+
+
+	<sql id="insertFile_h1">
+		insert into "HIS_注文情報" ( 
+			"amazon-order-id"
+			, "merchant-order-id"
+			, "purchase-date"
+			, "last-updated-date"
+			, "order-status"
+			, "fulfillment-channel"
+			, "sales-channel"
+			, "order-channel"
+			, url
+			, "ship-service-level"
+			, "product-name" 
+			, sku
+			, asin
+			, "item-status"
+			, quantity
+			, currency
+			, "item-price"
+			, "item-tax"
+			, "shipping-price"
+			, "shipping-tax"
+			, "gift-wrap-price"
+			, "gift-wrap-tax"
+			, "item-promotion-discount"
+			, "ship-promotion-discount"
+			, "ship-city"
+			, "ship-state"
+			, "ship-postal-code"
+			, "ship-country"
+			, "promotion-ids" 
+			, "店舗ID" 
+			, "登録日時" 
+			, "更新日時" 
+		) 
+		select
+			"amazon-order-id"
+			, "merchant-order-id"
+			, "purchase-date"
+			, "last-updated-date"
+			, "order-status"
+			, "fulfillment-channel"
+			, "sales-channel"
+			, "order-channel"
+			, url
+			, "ship-service-level"
+			, "product-name" 
+			, sku
+			, asin
+			, "item-status"
+			, quantity
+			, currency
+			, "item-price"
+			, "item-tax"
+			, "shipping-price"
+			, "shipping-tax"
+			, "gift-wrap-price"
+			, "gift-wrap-tax"
+			, "item-promotion-discount"
+			, "ship-promotion-discount"
+			, "ship-city"
+			, "ship-state"
+			, "ship-postal-code"
+			, "ship-country"
+			, "promotion-ids" 
+			, :shopId 
+			, :aaa 
+			, :aaa
+		from
+			"IPT_全注文情報"
+
+		
+
+	</sql>
+	<sql id="insertFile_h2">
+		insert into "HIS_ペイメント情報" (
+			"日付/時間" 
+			, "決済番号" 
+			, "トランザクションの種類" 
+			, "注文番号" 
+			, "SKU" 
+			, "説明" 
+			, "数量" 
+			, "Amazon 出品サービス" 
+			, "フルフィルメント1" 
+			, "市町村1" 
+			, "都道府県1" 
+			, "郵便番号1" 
+			, "税金徴収型1" 
+			, "商品売上1" 
+			, "商品の売上税" 
+			, "配送料" 
+			, "配送料の税金" 
+			, "ギフト包装手数料" 
+			, "ギフト包装クレジットの税金" 
+			, "Amazon1ポイントの費用" 
+			, "プロモーション割引額" 
+			, "プロモーション割引の税金" 
+			, "源泉徴収税を伴うマーケットプレイス" 
+			, "手数料" 
+			, "FBA 手数料1" 
+			, "トランザクションに関するその他の手数料" 
+			, "その他" 
+			, "合計" 
+			, "Amazon2 出品サービス" 
+			, "フルフィルメント2" 
+			, "市町村2" 
+			, "都道府県2" 
+			, "郵便番号2" 
+			, "税金徴収型" 
+			, "商品売上" 
+			, "商品の売上税2" 
+			, "配送料2" 
+			, "配送料の税金2" 
+			, "ギフト包装手数料2" 
+			, "ギフト包装クレジットの税金2" 
+			, "Amazon3ポイントの費用 " 
+			, "プロモーション割引額2" 
+			, "プロモーション割引の税金2" 
+			, "源泉徴収税を伴うマーケットプレイス2" 
+			, "手数料2" 
+			, "FBA 手数料" 
+			, "トランザクションに関するその他の手数料2" 
+			, "その他2" 
+			, "合計2" 
+			, "店舗ID" 
+			, "登録日時" 
+			, "更新日時" 
+		)
+		select 
+			"日付/時間" 
+			, "決済番号" 
+			, "トランザクションの種類" 
+			, "注文番号" 
+			, "SKU" 
+			, "説明" 
+			, "数量" 
+			, "Amazon 出品サービス" 
+			, "フルフィルメント1" 
+			, "市町村1" 
+			, "都道府県1" 
+			, "郵便番号1" 
+			, "税金徴収型1" 
+			, "商品売上1" 
+			, "商品の売上税" 
+			, "配送料" 
+			, "配送料の税金" 
+			, "ギフト包装手数料" 
+			, "ギフト包装クレジットの税金" 
+			, "Amazon1ポイントの費用" 
+			, "プロモーション割引額" 
+			, "プロモーション割引の税金" 
+			, "源泉徴収税を伴うマーケットプレイス" 
+			, "手数料" 
+			, "FBA 手数料1" 
+			, "トランザクションに関するその他の手数料" 
+			, "その他" 
+			, "合計" 
+			, "Amazon2 出品サービス" 
+			, "フルフィルメント2" 
+			, "市町村2" 
+			, "都道府県2" 
+			, "郵便番号2" 
+			, "税金徴収型" 
+			, "商品売上" 
+			, "商品の売上税2" 
+			, "配送料2" 
+			, "配送料の税金2" 
+			, "ギフト包装手数料2" 
+			, "ギフト包装クレジットの税金2" 
+			, "Amazon3ポイントの費用 " 
+			, "プロモーション割引額2" 
+			, "プロモーション割引の税金2" 
+			, "源泉徴収税を伴うマーケットプレイス2" 
+			, "手数料2" 
+			, "FBA 手数料" 
+			, "トランザクションに関するその他の手数料2" 
+			, "その他2" 
+			, "合計2" 
+			, :shopId 
+			, :aaa 
+			, :aaa
+		from 
+			"IPT_ペイメント情報"
+
+	</sql>
+	<sql id="insertFile_h3">
+		insert into "HIS_在庫保管手数料情報" (
+			  "ASIN" 
+			, "fnsku" 
+			, "商品名" 
+			, "Fulfillment center" 
+			, "Country code" 
+			, "Longest side" 
+			, "Median side" 
+			, "Shortest side" 
+			, "Measurement units" 
+			, "weight"
+			, "Weight units" 
+			, "Item volume" 
+			, "Volume units" 
+			, "Product size tier" 
+			, "Average quantity on hand" 
+			, "Average quantity pending removal" 
+			, "Total item volume (est.)" 
+			, "Month of charge" 
+			, "Storage rate" 
+			, "通貨" 
+			, "Monthly storage fee (est.)" 
+			, "category" 
+			, "Total Incentive Amount" 
+			, "breakdown_incentive_fee_amount" 
+			, "average_quantity_customer_orders" 
+			, "店舗ID" 
+			, "登録日時" 
+			, "更新日時" 
+		)
+		select
+			  "ASIN" 
+			, "fnsku" 
+			, "商品名" 
+			, "Fulfillment center" 
+			, "Country code" 
+			, "Longest side" 
+			, "Median side" 
+			, "Shortest side" 
+			, "Measurement units" 
+			, "weight"
+			, "Weight units" 
+			, "Item volume" 
+			, "Volume units" 
+			, "Product size tier" 
+			, "Average quantity on hand" 
+			, "Average quantity pending removal" 
+			, "Total item volume (est.)" 
+			, "Month of charge" 
+			, "Storage rate" 
+			, "通貨" 
+			, "Monthly storage fee (est.)" 
+			, "category" 
+			, "Total Incentive Amount" 
+			, "breakdown_incentive_fee_amount" 
+			, "average_quantity_customer_orders"  
+			, :shopId 
+			, :aaa 
+			, :aaa  
+		from
+			"IPT_在庫保管手数料情報"
+
+	</sql>
+	<sql id="insertFile_h4">
+		
+		insert into "HIS_長期在庫保管手数料請求額情報" ( 
+			  "日付" 
+			, "出品者SKU" 
+			, "FNSKU" 
+			, "ASIN" 
+			, "商品名" 
+			, "コンディション" 
+			, "qty-charged-long-time-range-long-term-storage-fee" 
+			, "商品サイズ" 
+			, "通貨" 
+			, "long-time-range-long-term-storage-fee" 
+			, "qty-charged-short-time-range-long-term-storage-fee" 
+			, "short-time-range-long-term-storage-fee" 
+			, "volume-unit" 
+			, "国" 
+			, "enrolled-in-small-and-light" 
+			, "店舗ID" 
+			, "登録日時" 
+			, "更新日時" 
+		) 
+		select
+			  "日付" 
+			, "出品者SKU" 
+			, "FNSKU" 
+			, "ASIN" 
+			, "商品名" 
+			, "コンディション" 
+			, "qty-charged-long-time-range-long-term-storage-fee" 
+			, "商品サイズ" 
+			, "通貨" 
+			, "long-time-range-long-term-storage-fee" 
+			, "qty-charged-short-time-range-long-term-storage-fee" 
+			, "short-time-range-long-term-storage-fee" 
+			, "volume-unit" 
+			, "国" 
+			, "enrolled-in-small-and-light"  
+			, :shopId 
+			, :aaa 
+			, :aaa
+		from
+			"IPT_長期在庫保管手数料請求額情報"
+
+	</sql>
+
+
 	<sql id="selectInitInfo">
 		select
 			"店舗ID"
@@ -26,6 +410,8 @@
 			"データ種別"
 
 	</sql>
+
+
 	<sql id="delAllFile01">
 		DELETE FROM "IPT_全出品情報"
 	</sql>
@@ -81,7 +467,6 @@
 			:col46  
 		)
 	</sql>
-
 	<sql id="delAllFile02">
 		DELETE FROM "IPT_全注文情報"
 	</sql>
@@ -122,7 +507,6 @@
 			:col31			 
 		)
 	</sql>
-
 	<sql id="delAllFile03">
 		DELETE FROM "IPT_FBA在庫情報"
 	</sql>
@@ -140,7 +524,6 @@
 			:col8
 		)
 	</sql>
-
 	<sql id="delAllFile04">
 		DELETE FROM "IPT_ペイメント情報"
 	</sql>
@@ -203,7 +586,6 @@
 			
 		)
 	</sql>
-
 	<sql id="delAllFile05">
 		DELETE FROM "IPT_FBA未出荷情報"
 	</sql>
@@ -285,13 +667,10 @@
 			:col72   
 		)
 	</sql>
-
 <!-- 06 数据库里没有建表 路过 下面07 -->
-	<sql id="delAllFile06">
-		
+	<sql id="delAllFile06">	
 	</sql>
-	<sql id="insertFile06">
-		
+	<sql id="insertFile06">	
 	</sql>
 	<sql id="delAllFile07">
 		DELETE FROM "IPT_ビジネスレポート-1"
@@ -322,7 +701,6 @@
 			:col20 
 		)
 	</sql>
-
 	<sql id="delAllFile08">
 		DELETE FROM "IPT_ビジネスレポート-2"
 	</sql>
@@ -348,7 +726,6 @@
 			:col16
 		)
 	</sql>
-
 	<sql id="delAllFile09">
 		DELETE FROM "IPT_ビジネスレポート-3"
 	</sql>
@@ -378,7 +755,6 @@
 			  
 		)
 	</sql>
-
 	<sql id="delAllFile10">
 		DELETE FROM "IPT_ビジネスレポート-4"
 	</sql>
@@ -412,7 +788,6 @@
 			:col24   
 		)
 	</sql>
-
 	<sql id="delAllFile11">
 		DELETE FROM "IPT_FBA在庫出荷情報"
 	</sql>
@@ -474,7 +849,6 @@
 			 
 		)
 	</sql>
-
 	<sql id="delAllFile12">
 		DELETE FROM "IPT_出荷情報"
 	</sql>
@@ -501,7 +875,6 @@
 			:col17   
 		)
 	</sql>
-
 	<sql id="delAllFile13">
 		DELETE FROM "IPT_手数料見積り額情報"
 	</sql>
@@ -540,7 +913,6 @@
 			:col29   
 		)
 	</sql>
-
 	<sql id="delAllFile14">
 		DELETE FROM "IPT_在庫保管手数料情報"
 	</sql>
@@ -577,7 +949,6 @@
 			:col27   
 		)
 	</sql>
-
 	<sql id="delAllFile15">
 		DELETE FROM "IPT_長期在庫保管手数料請求額情報"
 	</sql>
@@ -604,7 +975,6 @@
 			:col17   
 		)
 	</sql>
-
 	<sql id="delAllFile16">
 		DELETE FROM "IPT_返品情報"
 	</sql>
@@ -628,7 +998,6 @@
 			:col14  
 		)
 	</sql>
-
 	<sql id="delAllFile17">
 		DELETE FROM "IPT_返送推奨情報"
 	</sql>
@@ -656,7 +1025,6 @@
 			:col18   
 		)
 	</sql>
-
 	<sql id="delAllFile18">
 		DELETE FROM "IPT_返送所有権放棄依頼詳細情報"
 	</sql>
@@ -683,6 +1051,8 @@
 			:col17  
 		)
 	</sql>
+
+
 	<sql id="insertHistory">
 		INSERT INTO "TRN_データ導入履歴"
 		VALUES (
