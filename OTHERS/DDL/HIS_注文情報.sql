@@ -1,4 +1,4 @@
-create table public."HIS_注文情報" (
+create table public."HIS_拲暥忣曬" (
   "amazon-order-id" character varying(50)
   , "merchant-order-id" character varying(50)
   , "purchase-date" character varying(50)
@@ -28,7 +28,7 @@ create table public."HIS_注文情報" (
   , "ship-postal-code" character varying(50)
   , "ship-country" character varying(50)
   , "promotion-ids" character varying(200)
-  , "店舗ID" character varying(20)
-  , "登録日時" character varying(20)
-  , "更新日時" character varying(20)
+  , "揦曑ID" character varying(20)
+  , "搊榐擔帪" character varying(20)
+  , "峏怴擔帪" character varying(20)
 );

@@ -1,4 +1,4 @@
-create table public."IPT_FBAÌ¤½Ğ²Ù¾ğÊó" (
+create table public."IPT_FBA–¢ï‰×î•ñ" (
   "order-id" character varying(50)
   , "order-item-id" character varying(50)
   , "purchase-date" character varying(50)
@@ -69,17 +69,7 @@ create table public."IPT_FBAÌ¤½Ğ²Ù¾ğÊó" (
   , "ssa-ship-method" character varying(50)
   , "tax-collection-model" character varying(50)
   , "tax-collection-responsible-party" character varying(50)
-  , "Å¹ÊŞID" character varying(50)
-  , "ÅĞÏ¿Æü»ş" character varying(50)
-  , "¹¹¿·Æü»ş" character varying(50)
-);create table public."IPT_FBAºß¸Ë¾ğÊó" (
-  "seller-sku" character varying(50)
-  , "fulfillment-channel-sku" character varying(50)
-  , asin character varying(50)
-  , "condition-type" character varying(50)
-  , "Warehouse-Condition-code" character varying(50)
-  , "Quantity Available" character varying(50)
-  , "Å¹ÊŞID" character varying(50)
-  , "ÅĞÏ¿Æü»ş" character varying(50)
-  , "¹¹¿·Æü»ş" character varying(50)
+  , "“Ø•ÜID" character varying(50)
+  , "“ï˜Ş“ú" character varying(50)
+  , "ØÖ“ú" character varying(50)
 );

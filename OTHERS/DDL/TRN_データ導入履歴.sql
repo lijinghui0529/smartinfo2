@@ -1,6 +1,6 @@
-create table public."TRN_¥Ç¡¼¥¿Æ³ÆşÍúÎò" (
-  "Å¹ÊŞID" character varying(20)
-  , "¥Ç¡¼¥¿¼ïÊÌ" character varying(20)
-  , "Æ³ÆşÆü»ş" timestamp(6) without time zone
-  , "Æ³Æş·ï¿ô" integer
+create table public."TRN_ƒæÛƒŞ“±“ü—š—ğ" (
+  "“Ø•ÜID" character varying(20)
+  , "ƒæÛƒŞí•Ê" character varying(20)
+  , "“±“ü“ú" timestamp(6) without time zone
+  , "“±“üŒ”" integer
 );

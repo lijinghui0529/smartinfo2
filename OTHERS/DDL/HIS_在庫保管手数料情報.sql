@@ -1,7 +1,7 @@
-create table public."HIS_ºß¸ËÊİ´É¼ê¿ôÎÁ¾ğÊó" (
+create table public."HIS_İŒÉ•ÛŠÇè”—¿î•ñ" (
   "ASIN" character varying(50)
   , fnsku character varying(50)
-  , "¾¦ÉÊÌ¾" character varying(200)
+  , "¤•é–¼" character varying(200)
   , "Fulfillment center" character varying(50)
   , "Country code" character varying(50)
   , "Longest side" character varying(50)
@@ -18,13 +18,13 @@ create table public."HIS_ºß¸ËÊİ´É¼ê¿ôÎÁ¾ğÊó" (
   , "Total item volume (est.)" character varying(50)
   , "Month of charge" character varying(50)
   , "Storage rate" character varying(50)
-  , "ÄÌ²ß" character varying(50)
+  , "’Ê‰İ" character varying(50)
   , "Monthly storage fee (est.)" character varying(50)
   , category character varying(50)
   , "Total Incentive Amount" character varying(50)
   , breakdown_incentive_fee_amount character varying(50)
   , average_quantity_customer_orders character varying(50)
-  , "Å¹ÊŞID" character varying(50)
-  , "ÅĞÏ¿Æü»ş" character varying(50)
-  , "¹¹¿·Æü»ş" character varying(50)
+  , "“Ø•ÜID" character varying(50)
+  , "“ï˜Ş“ú" character varying(50)
+  , "ØÖ“ú" character varying(50)
 );
