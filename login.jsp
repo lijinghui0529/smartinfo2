@@ -26,6 +26,7 @@
       }
     </style>
 </head>
+<!-- //onload="init()" -->
 <body style="background-color:ghostwhite;">
 
 	<!-- <input type=button value= "ログイン"style="width:400px;height: 40px;" onclick="Efw('login')"> -->
