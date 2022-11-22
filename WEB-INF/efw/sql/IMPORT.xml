@@ -2,6 +2,134 @@
 <!DOCTYPE sqls>
 <sqls>
 
+	<sql id="update_02_r1">
+			update "RES_注文情報" 
+				set
+					, "ORDER_最終更新日時" = IPT."last-updated-date"
+					, "ORDER_注文ステータス" = IPT."order-status"
+					, "ORDER_出荷方式" = IPT."fulfillment-channel"
+					, "ORDER_配送方式" = IPT."ship-service-level"
+					, "ORDER_ASIN番号" = IPT."asin"
+					, "ORDER_数量" = IPT."quantity"
+					, "ORDER_通貨" = IPT."currency"
+					, "ORDER_価格" = IPT."item-price"
+					, "ORDER_税金" = IPT."item-tax"
+					, "ORDER_配送料" = IPT."shipping-price"
+					, "ORDER_配送料税金" = IPT."shipping-tax"
+					, "ORDER_包装料" = IPT."gift-wrap-price"
+					, "ORDER_包装料税金" = IPT."gift-wrap-tax"
+					, "ORDER_注文プロモーション用割引額" = IPT."item-promotion-discount"
+					, "ORDER_配送プロモーション用割引額" = IPT."ship-promotion-discount"
+					, "ORDER_配送住所-市区町村" = IPT."ship-city"
+					, "ORDER_配送住所-都道府県" = IPT."ship-state"
+					, "ORDER_配送住所-郵便番号" = IPT."ship-postal-code"
+					, "ORDER_配送住所-国" = IPT."ship-country"
+					, "ORDER_プロモーション内容" = IPT."promotion-ids" 
+					, "更新日時" =:nowTime
+				from
+					"IPT_全注文情報" IPT 
+					inner join "RES_注文情報" RES 
+						on IPT."amazon-order-id" = RES."Amazon注文番号" 
+						and IPT."sku" = RES."SKU番号"
+						and IPT."店舗ID" = RES."店舗ID"
+						and IPT."店舗ID" =:shipid
+
+	</sql>
+
+	<sql id="update_04_r1">
+			
+
+	</sql>
+	<sql id="update_11_r1">
+			
+
+	</sql>
+	<sql id="update_12_r1">
+			
+
+	</sql>
+	
+	<sql id="insert_02_r1">
+		insert 
+into "RES_注文情報" ( 
+    "ORDER_最終更新日時"
+    , "ORDER_注文ステータス"
+    , "ORDER_出荷方式"
+    , "ORDER_配送方式"
+    , "ORDER_ASIN番号"
+    , "ORDER_数量"
+    , "ORDER_通貨"
+    , "ORDER_価格"
+    , "ORDER_税金"
+    , "ORDER_配送料"
+    , "ORDER_配送料税金"
+    , "ORDER_包装料"
+    , "ORDER_包装料税金"
+    , "ORDER_注文プロモーション用割引額"
+    , "ORDER_配送プロモーション用割引額"
+    , "ORDER_配送住所-市区町村"
+    , "ORDER_配送住所-都道府県"
+    , "ORDER_配送住所-郵便番号"
+    , "ORDER_配送住所-国"
+    , "ORDER_プロモーション内容"
+    , "店舗ID"
+    , "登録日時"
+    , "更新日時"
+) 
+select
+    , "last-updated-date"
+    , "order-status"
+    , "fulfillment-channel"
+    , "ship-service-level"
+    , "asin"
+    , "quantity"
+    , "currency"
+    , "item-price"
+    , "item-tax"
+    , "shipping-price"
+    , "shipping-tax"
+    , "gift-wrap-price"
+    , "gift-wrap-tax"
+    , "item-promotion-discount"
+    , "ship-promotion-discount"
+    , "ship-city"
+    , "ship-state"
+    , "ship-postal-code"
+    , "ship-country"
+    , "promotion-ids"
+    , "店舗ID"
+    , :nowTime
+    , :nowTime 
+from
+    "IPT_全注文情報" IPT 
+where
+    not exists ( 
+        select
+            1 
+        from
+            "RES_注文情報" RES 
+        where
+            IPT."amazon-order-id" = RES."Amazon注文番号" 
+            and IPT."sku" = RES."SKU番号" 
+            and IPT."店舗ID" = RES."店舗ID"
+    ) 
+    and IPT."店舗ID" = :shipid
+	
+
+	</sql>
+	<sql id="insert_04_r1">
+			
+
+	</sql>
+	<sql id="insert_11_r1">
+			
+
+	</sql>
+	<sql id="insert_12_r1">
+			
+
+	</sql>
+
 	<sql id="deleteFile_h1">
 			delete 
 			from

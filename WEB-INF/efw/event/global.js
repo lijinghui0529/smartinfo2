@@ -23,7 +23,101 @@ function excute(flg_file01, flg_file02, flg_file03, flg_file04, flg_file05, flg_
 				h3();
 		
 				h4();
+
+				excute_02_r1();
 		
+}
+function excute_02_r1() {
+	SHOP_ID = session.get("SHOP_ID");
+	var today = new Date();
+	var nowTime = today.format("yyyy-MM-dd HH:mm:ss");
+
+	var updateResult = db.change(
+		"IMPORT",
+		"update_02_r1",
+		{
+			"shopId": SHOP_ID, 
+			"nowTime": nowTime
+		}
+	);
+
+	var insertResult = db.change(
+		"IMPORT",
+		"insert_02_r1",
+		{
+			"shopId": SHOP_ID,
+			"nowTime": nowTime
+		}
+	);
+}
+function excute_04_r1() {
+	SHOP_ID = session.get("SHOP_ID");
+	var today = new Date();
+	var nowTime = today.format("yyyy-MM-dd HH:mm:ss");
+
+	var updateResult = db.change(
+		"IMPORT",
+		"update_04_r1",
+		{
+			"shopId": SHOP_ID, 
+			"nowTime": nowTime
+		}
+	);
+
+	var insertResult = db.change(
+		"IMPORT",
+		"insert_04_r1",
+		{
+			"shopId": SHOP_ID,
+			"nowTime": nowTime
+		}
+	);
+}
+function excute_11_r1() {
+	SHOP_ID = session.get("SHOP_ID");
+	var today = new Date();
+	var nowTime = today.format("yyyy-MM-dd HH:mm:ss");
+
+	var updateResult = db.change(
+		"IMPORT",
+		"update_11_r1",
+		{
+			"shopId": SHOP_ID, 
+			"nowTime": nowTime
+		}
+	);
+
+	var insertResult = db.change(
+		"IMPORT",
+		"insert_11_r1",
+		{
+			"shopId": SHOP_ID,
+			"nowTime": nowTime
+		}
+	);
+}
+function excute_12_r1() {
+	SHOP_ID = session.get("SHOP_ID");
+	var today = new Date();
+	var nowTime = today.format("yyyy-MM-dd HH:mm:ss");
+
+	var updateResult = db.change(
+		"IMPORT",
+		"update_12_r1",
+		{
+			"shopId": SHOP_ID, 
+			"nowTime": nowTime
+		}
+	);
+
+	var insertResult = db.change(
+		"IMPORT",
+		"insert_12_r1",
+		{
+			"shopId": SHOP_ID,
+			"nowTime": nowTime
+		}
+	);
 }
 
 function h1() {
