@@ -1,4 +1,4 @@
-create table public."IPT_FBA–¢ï‰×î•ñ" (
+create table public."IPT_FBAæœªå‡ºè·æƒ…å ±" (
   "order-id" character varying(50)
   , "order-item-id" character varying(50)
   , "purchase-date" character varying(50)
@@ -69,7 +69,7 @@ create table public."IPT_FBA–¢ï‰×î•ñ" (
   , "ssa-ship-method" character varying(50)
   , "tax-collection-model" character varying(50)
   , "tax-collection-responsible-party" character varying(50)
-  , "“Ø•ÜID" character varying(50)
-  , "“ï˜Ş“ú" character varying(50)
-  , "ØÖ“ú" character varying(50)
+  , "åº—èˆ—ID" character varying(50)
+  , "ç™»éŒ²æ—¥æ™‚" character varying(50)
+  , "æ›´æ–°æ—¥æ™‚" character varying(50)
 );
