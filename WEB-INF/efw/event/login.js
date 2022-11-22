@@ -14,12 +14,7 @@ login.fire=function(params){   //
 	// session.invalidate();
 	
 	session.set("SHOP_ID", "Smart-Bear");
-	//var shopId = session.get("SHOP_ID");
 	
-
-
-
-
 
 
 	return ret.navigate("menu.jsp");//跳转

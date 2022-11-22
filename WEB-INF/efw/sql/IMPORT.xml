@@ -13,13 +13,11 @@
 					from
 						"IPT_全注文情報" 
 					where
-						"IPT_全注文情報"."amazon-order-id" = "HIS_注文情報"."amazon-order-id" 
+							"IPT_全注文情報"."amazon-order-id" = "HIS_注文情報"."amazon-order-id" 
 						and "IPT_全注文情報"."sku" = "HIS_注文情報"."sku" 
 						and "IPT_全注文情報"."asin" = "HIS_注文情報"."asin"
-						<!-- and "IPT_全注文情報"."店舗ID" = 'Smart-Bear' -->
-						
-						<!-- and "IPT_全注文情報"."店舗ID" = "HIS_注文情報"."店舗ID" -->
-						<!-- and "IPT_全注文情報"."店舗ID" = :shopId -->
+						and "IPT_全注文情報"."店舗ID" = "HIS_注文情報"."店舗ID"
+						and "IPT_全注文情報"."店舗ID" = :shopId
 				)
 	</sql>
 	<sql id="deleteFile_h2">
@@ -35,13 +33,12 @@
 					where
 						    "IPT_ペイメント情報"."日付/時間" = "HIS_ペイメント情報"."日付/時間" 
 						and "IPT_ペイメント情報"."決済番号" = "HIS_ペイメント情報"."決済番号" 
-						and "IPT_ペイメント情報"."トランザクションの種類" = "HIS_ペイメント情報"."トランザクションの種類" 
-						<!-- and "IPT_ペイメント情報"."注文番号" = "HIS_ペイメント情報"."注文番号" 
-						and "IPT_ペイメント情報"."SKU" = "HIS_ペイメント情報"."SKU"  -->
-						and "IPT_ペイメント情報"."説明" = "HIS_ペイメント情報"."説明" 						
-
-						<!-- and "IPT_ペイメント情報"."店舗ID" = "HIS_ペイメント情報"."店舗ID" 
-						and "IPT_ペイメント情報"."店舗ID" = :shopId  -->
+						and "IPT_ペイメント情報"."トランザクションの種類" = "HIS_ペイメント情報"."トランザクションの種類" 				
+						and COALESCE("IPT_ペイメント情報"."注文番号",'') = COALESCE("HIS_ペイメント情報"."注文番号",'')
+						and COALESCE("IPT_ペイメント情報"."SKU",'') = COALESCE("HIS_ペイメント情報"."SKU",'') 						
+						and COALESCE("IPT_ペイメント情報"."説明",'') = COALESCE("HIS_ペイメント情報"."説明",'')						
+						and "IPT_ペイメント情報"."店舗ID" = "HIS_ペイメント情報"."店舗ID" 
+						and "IPT_ペイメント情報"."店舗ID" = :shopId 
 						
 				)
 	</sql>
@@ -59,10 +56,9 @@
 						    "IPT_在庫保管手数料情報"."ASIN" = "HIS_在庫保管手数料情報"."ASIN" 
 						and "IPT_在庫保管手数料情報"."Fulfillment center" = "HIS_在庫保管手数料情報"."Fulfillment center" 						
 						and "IPT_在庫保管手数料情報"."Country code" = "HIS_在庫保管手数料情報"."Country code" 
-						and "IPT_在庫保管手数料情報"."Month of charge" = "HIS_在庫保管手数料情報"."Month of charge"						
-						
-						<!-- and "IPT_在庫保管手数料情報"."店舗ID" = "HIS_在庫保管手数料情報"."店舗ID" 
-						and "IPT_在庫保管手数料情報"."店舗ID" = :shopId     -->
+						and "IPT_在庫保管手数料情報"."Month of charge" = "HIS_在庫保管手数料情報"."Month of charge"												
+						and "IPT_在庫保管手数料情報"."店舗ID" = "HIS_在庫保管手数料情報"."店舗ID" 
+						and "IPT_在庫保管手数料情報"."店舗ID" = :shopId    
 					)	
 	</sql>
 	<sql id="deleteFile_h4">
@@ -81,9 +77,8 @@
 					and "IPT_長期在庫保管手数料請求額情報"."ASIN" = "HIS_長期在庫保管手数料請求額情報"."ASIN" 
 					and "IPT_長期在庫保管手数料請求額情報"."コンディション" = "HIS_長期在庫保管手数料請求額情報"."コンディション" 
 					and "IPT_長期在庫保管手数料請求額情報"."国" = "HIS_長期在庫保管手数料請求額情報"."国" 
-
-					<!-- and "IPT_長期在庫保管手数料請求額情報"."店舗ID" = "HIS_長期在庫保管手数料請求額情報"."店舗ID" 
-					and "IPT_長期在庫保管手数料請求額情報"."店舗ID" = :shopId  -->
+					and "IPT_長期在庫保管手数料請求額情報"."店舗ID" = "HIS_長期在庫保管手数料請求額情報"."店舗ID" 
+					and "IPT_長期在庫保管手数料請求額情報"."店舗ID" = :shopId 
 			)
 	</sql>
 
@@ -153,7 +148,7 @@
 			, "ship-postal-code"
 			, "ship-country"
 			, "promotion-ids" 
-			, :shopId 
+			, :shopId
 			, :aaa 
 			, :aaa
 		from

@@ -26,6 +26,7 @@ importfile.paramsFormat = {
 
 var num = 0;//履歴登録処理の件数
 var registrationDate = "";//表里显示的时间
+
 var SHOP_ID = session.get("SHOP_ID");
 
 importfile.fire = function (params) {   //
@@ -50,7 +51,7 @@ importfile.fire = function (params) {   //
 	var flg_file17 = false;
 	var flg_file18 = false;
 
-	file.saveUploadFiles("upload");//importfile_01文件上传到upload文件
+	file.saveUploadFiles("upload");//importfile_01文件上传到upload文件 不写也可以上传
 
 	if (params["#importfile_01"] != null && params["#importfile_01"] != "") {
 
@@ -554,7 +555,7 @@ importfile.fire = function (params) {   //
 		flg_file07, flg_file08, flg_file09, flg_file10, flg_file11, flg_file12,
 		flg_file13, flg_file14, flg_file15, flg_file16, flg_file17, flg_file18);
 
-	return ret.navigate("upload.jsp?shop=Smart-Bear");//跳转
+	return ret.navigate("upload.jsp");//跳转
 };
 function import_01(aryField, index) {//aryField第一个参数是当前行的数据（数组） index指的是行索引（第一行时index=0,第二行时index=1）........+1;
 

@@ -31,14 +31,7 @@
 
   	</script>
     <style>
-      /* .upfile {
-          border-top: 2px;
-          border-right: 2px;
-          border-left: 2px;
-          border-bottom: 2px;
-          border-style: solid;
 
-      } */
     </style>
 </head>
 <body style="background-color:ghostwhite;" onload="init()">

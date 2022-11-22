@@ -3,20 +3,22 @@ initimport.name = "インポート画面初期表示";
 initimport.paramsFormat = {
 
 };
+var SHOP_ID ="";
 initimport.fire = function (params) {
 
-	function FormatDate(strTime) {
-		var date = new Date(strTime);
-		return date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+	var ret = new Result();
+
+	SHOP_ID = session.get("SHOP_ID");
+	if(SHOP_ID == null|| SHOP_ID == ""){
+		return ret.navigate("login.jsp");//跳转
 	}
 
-	var ret = new Result();
 	// 履歴テ―プルから前回導入日時と件数を取得する
 	var selectResult = db.select(
 		"IMPORT",//IMPORT.xml
 		"selectInitInfo",
 		{
-			"shopId": "Smart-Bear" //session.get("SHOP_ID")
+			"shopId": SHOP_ID
 		}
 	).getArray();
 
@@ -27,11 +29,6 @@ initimport.fire = function (params) {
 		if (datetype == "file01") {
 			script = script + "setInit('file01','" + selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss") + "','" + selectResult[i]["導入件数"] + "');";
 
-			// var today = new Date();
-			// var today_time =  FormatDate(today);
-			// if(today_time > selectResult[i]["導入日時"].format("yyyy-MM-dd HH:mm:ss")){
-			//   today_time.debug("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
-			// }
 
 		}
 		if (datetype == "file02") {

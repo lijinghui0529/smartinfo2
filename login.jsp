@@ -29,7 +29,7 @@
 <body style="background-color:ghostwhite;">
 
 	<!-- <input type=button value= "ログイン"style="width:400px;height: 40px;" onclick="Efw('login')"> -->
-	<input type=button value= "ログイン"style="width:400px;height: 40px;" onclick="Efw('menu_goto',{page:'menu.jsp',shop:'Smart-Bear'})">
+	<input type=button value= "ログイン"style="width:400px;height: 40px;" onclick="Efw('login')">
 			
 
 
