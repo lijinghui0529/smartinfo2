@@ -24,7 +24,7 @@ function excute(flg_file01, flg_file02, flg_file03, flg_file04, flg_file05, flg_
 		
 				h4();
 
-				excute_02_r1();
+				// excute_02_r1();
 		
 }
 function excute_02_r1() {
@@ -139,7 +139,7 @@ function h1() {
 		"insertFile_h1",
 		{
 			"shopId": SHOP_ID,
-			"aaa": nowTime
+			"nowTime": nowTime
 		}
 	);//导入数据库
 }
@@ -162,7 +162,7 @@ function h2() {
 		"insertFile_h2",
 		{
 			"shopId": SHOP_ID,
-			"aaa": nowTime
+			"nowTime": nowTime
 		}
 	);//导入数据库
 
@@ -186,7 +186,7 @@ function h3() {
 		"insertFile_h3",
 		{
 			"shopId": SHOP_ID,
-			"aaa": nowTime
+			"nowTime": nowTime
 		}
 	);//导入数据库
 
@@ -210,7 +210,7 @@ function h4() {
 		"insertFile_h4",
 		{
 			"shopId": SHOP_ID,
-			"aaa": nowTime
+			"nowTime": nowTime
 		}
 	);//导入数据库
 
