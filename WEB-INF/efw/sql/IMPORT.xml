@@ -50,70 +50,71 @@
 	</sql>
 	
 	<sql id="insert_02_r1">
-		insert 
-into "RES_注文情報" ( 
-    "ORDER_最終更新日時"
-    , "ORDER_注文ステータス"
-    , "ORDER_出荷方式"
-    , "ORDER_配送方式"
-    , "ORDER_ASIN番号"
-    , "ORDER_数量"
-    , "ORDER_通貨"
-    , "ORDER_価格"
-    , "ORDER_税金"
-    , "ORDER_配送料"
-    , "ORDER_配送料税金"
-    , "ORDER_包装料"
-    , "ORDER_包装料税金"
-    , "ORDER_注文プロモーション用割引額"
-    , "ORDER_配送プロモーション用割引額"
-    , "ORDER_配送住所-市区町村"
-    , "ORDER_配送住所-都道府県"
-    , "ORDER_配送住所-郵便番号"
-    , "ORDER_配送住所-国"
-    , "ORDER_プロモーション内容"
-    , "店舗ID"
-    , "登録日時"
-    , "更新日時"
-) 
-select
-    , "last-updated-date"
-    , "order-status"
-    , "fulfillment-channel"
-    , "ship-service-level"
-    , "asin"
-    , "quantity"
-    , "currency"
-    , "item-price"
-    , "item-tax"
-    , "shipping-price"
-    , "shipping-tax"
-    , "gift-wrap-price"
-    , "gift-wrap-tax"
-    , "item-promotion-discount"
-    , "ship-promotion-discount"
-    , "ship-city"
-    , "ship-state"
-    , "ship-postal-code"
-    , "ship-country"
-    , "promotion-ids"
-    , "店舗ID"
-    , :nowTime
-    , :nowTime 
-from
-    "IPT_全注文情報" IPT 
-where
-    not exists ( 
-        select
-            1 
-        from
-            "RES_注文情報" RES 
-        where
-            IPT."amazon-order-id" = RES."Amazon注文番号" 
-            and IPT."sku" = RES."SKU番号" 
-            and IPT."店舗ID" = RES."店舗ID"
-    ) 
-    and IPT."店舗ID" = :shipid
+		insert into 
+
+		"RES_注文情報" ( 		
+			"ORDER_最終更新日時"
+			, "ORDER_注文ステータス"
+			, "ORDER_出荷方式"
+			, "ORDER_配送方式"
+			, "ORDER_ASIN番号"
+			, "ORDER_数量"
+			, "ORDER_通貨"
+			, "ORDER_価格"
+			, "ORDER_税金"
+			, "ORDER_配送料"
+			, "ORDER_配送料税金"
+			, "ORDER_包装料"
+			, "ORDER_包装料税金"
+			, "ORDER_注文プロモーション用割引額"
+			, "ORDER_配送プロモーション用割引額"
+			, "ORDER_配送住所-市区町村"
+			, "ORDER_配送住所-都道府県"
+			, "ORDER_配送住所-郵便番号"
+			, "ORDER_配送住所-国"
+			, "ORDER_プロモーション内容"
+			, "店舗ID"
+			, "登録日時"
+			, "更新日時"
+		) 
+		select
+			, "last-updated-date"
+			, "order-status"
+			, "fulfillment-channel"
+			, "ship-service-level"
+			, "asin"
+			, "quantity"
+			, "currency"
+			, "item-price"
+			, "item-tax"
+			, "shipping-price"
+			, "shipping-tax"
+			, "gift-wrap-price"
+			, "gift-wrap-tax"
+			, "item-promotion-discount"
+			, "ship-promotion-discount"
+			, "ship-city"
+			, "ship-state"
+			, "ship-postal-code"
+			, "ship-country"
+			, "promotion-ids"
+			, "店舗ID"
+			, :nowTime
+			, :nowTime 
+		from
+			"IPT_全注文情報" IPT 
+		where
+			not exists ( 
+				select
+					1 
+				from
+					"RES_注文情報" RES 
+				where
+					IPT."amazon-order-id" = RES."Amazon注文番号" 
+					and IPT."sku" = RES."SKU番号" 
+					and IPT."店舗ID" = RES."店舗ID"
+			) 
+			and IPT."店舗ID" = :shipid
 	
 
 	</sql>
@@ -277,8 +278,8 @@ where
 			, "ship-country"
 			, "promotion-ids" 
 			, :shopId
-			, :aaa 
-			, :aaa
+			, :nowTime 
+			, :nowTime
 		from
 			"IPT_全注文情報"
 
@@ -314,28 +315,7 @@ where
 			, "FBA 手数料1" 
 			, "トランザクションに関するその他の手数料" 
 			, "その他" 
-			, "合計" 
-			, "Amazon2 出品サービス" 
-			, "フルフィルメント2" 
-			, "市町村2" 
-			, "都道府県2" 
-			, "郵便番号2" 
-			, "税金徴収型" 
-			, "商品売上" 
-			, "商品の売上税2" 
-			, "配送料2" 
-			, "配送料の税金2" 
-			, "ギフト包装手数料2" 
-			, "ギフト包装クレジットの税金2" 
-			, "Amazon3ポイントの費用 " 
-			, "プロモーション割引額2" 
-			, "プロモーション割引の税金2" 
-			, "源泉徴収税を伴うマーケットプレイス2" 
-			, "手数料2" 
-			, "FBA 手数料" 
-			, "トランザクションに関するその他の手数料2" 
-			, "その他2" 
-			, "合計2" 
+			, "合計" 			
 			, "店舗ID" 
 			, "登録日時" 
 			, "更新日時" 
@@ -368,31 +348,10 @@ where
 			, "FBA 手数料1" 
 			, "トランザクションに関するその他の手数料" 
 			, "その他" 
-			, "合計" 
-			, "Amazon2 出品サービス" 
-			, "フルフィルメント2" 
-			, "市町村2" 
-			, "都道府県2" 
-			, "郵便番号2" 
-			, "税金徴収型" 
-			, "商品売上" 
-			, "商品の売上税2" 
-			, "配送料2" 
-			, "配送料の税金2" 
-			, "ギフト包装手数料2" 
-			, "ギフト包装クレジットの税金2" 
-			, "Amazon3ポイントの費用 " 
-			, "プロモーション割引額2" 
-			, "プロモーション割引の税金2" 
-			, "源泉徴収税を伴うマーケットプレイス2" 
-			, "手数料2" 
-			, "FBA 手数料" 
-			, "トランザクションに関するその他の手数料2" 
-			, "その他2" 
-			, "合計2" 
+			, "合計"  
 			, :shopId 
-			, :aaa 
-			, :aaa
+			, :nowTime 
+			, :nowTime
 		from 
 			"IPT_ペイメント情報"
 
@@ -455,8 +414,8 @@ where
 			, "breakdown_incentive_fee_amount" 
 			, "average_quantity_customer_orders"  
 			, :shopId 
-			, :aaa 
-			, :aaa  
+			, :nowTime 
+			, :nowTime  
 		from
 			"IPT_在庫保管手数料情報"
 
@@ -500,8 +459,8 @@ where
 			, "国" 
 			, "enrolled-in-small-and-light"  
 			, :shopId 
-			, :aaa 
-			, :aaa
+			, :nowTime 
+			, :nowTime
 		from
 			"IPT_長期在庫保管手数料請求額情報"
 
@@ -684,28 +643,8 @@ where
 			:col27,
 			:col28,
 			:col29,
-			:col30,
-			:col31,
-			:col32,
-			:col33,
-			:col34,
-			:col35,
-			:col36,
-			:col37,
-			:col38,
-			:col39,
-			:col40,
-			:col41,
-			:col42,
-			:col43,
-			:col44,
-			:col45,
-			:col46, 
-			:col47,
-			:col48,
-			:col49,
-			:col50,
-			:col51
+			:col30
+			
 			
 		)
 	</sql>
